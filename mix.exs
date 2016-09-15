@@ -2,12 +2,16 @@ defmodule DomainParts.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :domain_parts,
-     version: "0.1.0",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :domain_parts,
+      version: "0.1.0",
+      elixir: "~> 1.3",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      description: description,
+      package: package,
+      deps: deps,
+    ]
   end
 
   defp apps do
@@ -24,6 +28,22 @@ defmodule DomainParts.Mixfile do
       applications: apps
     ]
   end
+
+  defp description do
+    """
+    A module for extracting the parts of a domain (subdomain, domain, and tld).
+    """
+  end
+
+  defp package do
+    [
+       name: :domain_parts,
+       files: ["lib", "mix.exs", "README*", "LICENSE*"],
+       maintainers: ["Jason Goldberger"],
+       licenses: ["MIT"],
+       links: %{"GitHub" => "https://github.com/elbow-jason/domain_parts"}
+    ]
+   end
 
   # Dependencies can be Hex packages:
   #
